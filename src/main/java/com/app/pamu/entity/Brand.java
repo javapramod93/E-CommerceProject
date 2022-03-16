@@ -33,7 +33,7 @@ public class Brand {
 	private String tagLine;
 	
 	@Column(name ="imageBrand")
-	private String imageBrand;
+	private String imageLink;
 	
 	@Column(name ="note")
 	private String note;
