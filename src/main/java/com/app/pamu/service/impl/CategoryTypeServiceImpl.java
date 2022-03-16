@@ -1,6 +1,7 @@
 package com.app.pamu.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.app.pamu.entity.CategoryType;
 import com.app.pamu.exception.CategoryTypeNotFoundException;
 import com.app.pamu.repo.CategoryTypeRepository;
 import com.app.pamu.service.ICategoryTypeService;
+import com.app.pamu.util.AppUtil;
 @Service
 public class CategoryTypeServiceImpl implements ICategoryTypeService {
 	
@@ -50,5 +52,17 @@ public class CategoryTypeServiceImpl implements ICategoryTypeService {
 	public void deleteCategoryType(Long id) {
 		  repo.delete(getOneCategoryType(id));
 
+	}
+
+	@Override
+	public Map<Integer, String> getCategoryTypeIdAndName() {
+		  List<Object[]> list = repo.getCategoryTypeIdAndName();
+		return AppUtil.convertListToMap(list);
+	}
+
+	@Override
+	public long totalCategoryTypes() {
+	
+		return repo.count();
 	}
 }
